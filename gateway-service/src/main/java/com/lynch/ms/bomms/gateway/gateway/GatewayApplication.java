@@ -28,9 +28,9 @@ public class GatewayApplication {
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/catalog/**")
+				registry.addMapping("/api/**")
 								.allowedOrigins("http://localhost:4200")
-								.allowedMethods("GET", "POST", "OPTION");
+								.allowedMethods("GET", "POST", "OPTIONS");
 			}
 		};
 	}

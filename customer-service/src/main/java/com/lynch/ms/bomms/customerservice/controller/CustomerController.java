@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api")
 @RestController
 public class CustomerController {
@@ -25,20 +25,9 @@ public class CustomerController {
     return customerService.getAllCustomers();
   }
 
-
   @GetMapping("/customers/{id}")
-  public Optional<Customer> getCustomer(@PathVariable Long id){
-    return customerService.getCustomer(id);
-  }
+  public Optional<Customer> getCustomer(@PathVariable Long id){ return customerService.getCustomer(id); }
 
-/*
-  @GetMapping("/customers/{custId}")
-  public Optional<Customer> getCustomerByCustId(@PathVariable String custId){
-    log.debug("Get customer by id method");
-    log.debug("custId: {}", custId);
-    return customerService.getCustomerByCustId(custId);
-  }
-*/
   @PostMapping("/customers")
   public void addCustomer(@RequestBody Customer customer){
     customerService.addCustomer(customer);

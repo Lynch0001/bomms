@@ -45,7 +45,7 @@ getBookData(isbn: number): Observable<any> {
 
   getCustomerData(id: number): Observable<any> {
     console.log('Rest-Get Customer data for id: ', id);
-    return this.http.get(this.custEndpoint + 'customers/' + id, this.httpOptions).pipe(
+    return this.http.get(this.zuulEndpoint + 'api/customers/' + id, this.httpOptions).pipe(
       map(this.extractData)
     );
   }

@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class BookController {
