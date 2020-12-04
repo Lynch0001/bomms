@@ -1,0 +1,38 @@
+<div class="card mx-auto">
+  <div class="card-header">
+    <h6 class="card-title">{{book.title}}</h6>
+    <h6 class="card-title">{{book.subtitle}}</h6>
+  </div>
+  <div class="card-body">
+    <span class="book-data">
+      Author:  {{book.authors}}<br>
+      Publisher:  {{book.publisher}}<br>
+      Isbn:  {{book.isbn13}}<br>
+      Year:  {{book.year}}<br>
+      Language:  {{book.language}}<br>
+      Pages:  {{book.pages}}<br>
+      Price (USD):  {{book.price}}<br>
+      Available Quantity:  {{book.quantity}}<br><br>
+    </span>
+    <span class="book-image">
+      <img class="card-img" src="{{book.image}}" alt="book_cover_image" width="100px">
+    </span>
+    <div class="book-desc">
+      <h6>Book Description</h6>
+      <p>{{book.desc}}</p>
+    </div>
+    <div class="reviews" *ngIf="book.reviews">
+      <div class="container">
+        <p>ITStoreBook Rating: {{book.rating}}</p>
+        <h4>Reviews</h4>
+      <span *ngFor="let review of book.reviews">
+        <h6>{{review.reviewer}}</h6>
+        <p>{{review.reviewComment}}</p>
+      </span>
+      </div>
+    </div>
+    <span class="card-buttons">
+      <button class="btn-primary" (click)="addToCart()" >Add to Cart</button>
+    </span>
+  </div>
+</div>

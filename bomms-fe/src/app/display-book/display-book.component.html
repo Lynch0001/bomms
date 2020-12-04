@@ -1,0 +1,14 @@
+<div class="card" style="width: 15rem;">
+  <h6 *ngIf="book.year==2020" class="banner-new">NEW</h6>
+  <img class="card-img-top" src="{{book.image}}" alt="book_cover_image">
+  <div class="card-body">
+    <h6 class="card-title">{{book.title}}</h6>
+    Available Quantity:  {{book.quantity}}<br>
+    Price (USD):  {{book.price}}<br>
+    Rating:  {{book.rating}}<br>
+    Isbn:  {{book.isbn13}}<br>
+    <span class="card-buttons">
+      <button class="btn-primary" (click)="showBookDetail(book)" >View Details</button>
+    </span>
+  </div>
+</div>

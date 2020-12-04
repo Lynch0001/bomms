@@ -1,0 +1,23 @@
+.mast-head{
+  height: 3em;
+  background-color: lightgrey;
+  vertical-align: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: xx-large;
+}
+img{
+  display: inline-block;
+}
+h2{
+  display: inline-block;
+  padding-top: 1em;
+
+}
+.cart{
+  width:5%;
+  display: block;
+  padding-top: 2em;
+  float: right;
+}
+

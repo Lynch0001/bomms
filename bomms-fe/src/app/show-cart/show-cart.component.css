@@ -1,0 +1,160 @@
+.cart-list{
+  display: block;
+}
+.cart-book-image{
+  display: inline-block;
+}
+.cart-book-title{
+  margin-bottom: 0;
+  font-weight: bolder;
+}
+.cart-book-author {
+  margin-bottom: 0;
+  font-weight: lighter;
+  font-size: .75em;
+}
+.cart-book-price {
+  font-weight: lighter;
+  font-size: .75em;
+}
+.cart-book-details{
+  display: inline-block;
+}
+.cart-book-quantity{
+  display: inline-block;
+  float: right;
+  text-align: right;
+}
+label{
+  display: block;
+}
+.cart-item-subtotal{
+  display: block;
+  float: right;
+}
+input#qty-adjust{
+  display: block;
+  width: 5em;
+  float: right;
+}
+.form-group{
+display: block;
+}
+.cart-subtotal{
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.cart-tax{
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.cart-tax-note{
+  font-size: small;
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.cart-total{
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+.order-success-banner{
+  width: 20em;
+  height: 3em;
+  background-color: mediumseagreen;
+  opacity: 0.75;
+  border-radius: .25em;
+  position: relative;
+  bottom:5em;
+}
+
+.order-success-banner-text{
+  vertical-align: middle;
+  text-align: center;
+  color: whitesmoke;
+}
+.success-text{
+  font-size: .75em;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.cart-costs-section{
+  display: block;
+}
+.cart-costs-data{
+text-align: right;
+}
+
+.cart-button{
+  display: block;
+  float: right;
+}
+.cart-summary{
+  alignment: right;
+}
+.cart-summary-billing{
+  margin-bottom: 1em;
+}
+.cart-summary-shipping{
+  margin-bottom: 1em;
+}
+.cart-summary-billing .address{
+  margin-bottom: 0;
+  font-weight: lighter;
+}
+.cart-summary-shipping .address{
+  margin-bottom: 0;
+  font-weight: lighter;
+}
+.cart-summary-address-header{
+  font-weight: bolder;
+  text-decoration-line: underline;
+}
+.cart-summary-left{
+display: inline-block;
+}
+.cart-summary-right{
+  display: block;
+  float: right;
+}
+.cart-verify-email-label{
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+.cart-verify-email-data{
+  font-weight: lighter;
+  margin-bottom: 0;
+}
+.cart-shipping-method{
+  font-weight: lighter;
+  font-size: small;
+}
+.form-check-label{
+  font-weight: lighter;
+  font-style: oblique;
+  font-size: small;
+}
+.d-block {
+  display: inline-block;
+}
+div.custom-control{
+  display: inline-block;
+}
+#firstName{
+  margin-right: 1.5em;
+}
+.cart-summary-payment-header{
+  font-weight: bolder;
+  text-decoration-line: underline;
+  align-content: center;
+}
+
+
+
+
+
+
+
+
+

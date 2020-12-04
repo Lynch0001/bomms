@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="cart-list" *ngIf="booksInCart.length>0 && orderSubmitSuccess == 'no';else noBooksInCart">
+    <!-- Display information for each book - start -->
+    <h4>Order Details</h4>
+    <div class="cart-list" *ngFor="let book of booksInCart" >
+        <span class="cart-book-image">
+          <img class="cart-book-image-image" src="{{book.image}}" alt="book_cover_image" width="120px">
+        </span>
+        <span class="cart-book-details">
+          <p class="cart-book-title">{{book.title}}</p>
+          <p class="cart-book-author">Author:  {{book.authors}}</p>
+          <p class="cart-book-price">Price:  {{book.price | currency}}</p>
+        </span>
+        <span class="cart-book-quantity">
+            <div class="form-group">
+              <label for="qty-adjust">Item Quantity:</label>
+              <input class="form-control" [(ngModel)]="book.qty" id="qty-adjust" name="qty-adjust" type="number" align="right">
+            </div>
+          <p class="cart-item-subtotal">Item Subtotal: {{book.price * book.qty | currency}}</p>
+        </span>
+     </div>
+    <!-- Display information for each book - end -->
+    <div class="cart-costs-section">
+      <div class="cart-costs-data">
+        <p class="cart-subtotal">Order Subtotal: {{getCartCost()[0] | currency}}</p>
+        <p class="cart-tax">Estimated Tax:  {{getCartCost()[1] | currency}}</p>
+        <p class="cart-tax-note">*based on 6% Virgina Sales Tax</p>
+        <p class="cart-tax">Shipping Cost:  {{getShippingCost(tempShippingMethod) | currency}}</p>
+        <p class="cart-total">Order Total:    {{getCartCost()[2] | currency}}</p><br>
+      </div>
+    </div>
+    <div class="container col-lg-12">
+      <hr>
+      <div class="cart-summary">
+        <h4>Order Summary</h4>
+        <!-- Cart Summary left -->
+        <div *ngIf="customerData" class="cart-summary-left col-6">
+            <h6 class="cart-summary-address-header">Billing Address</h6>
+
+            <div *ngFor="let address of customerData.addresses">
+             <div class="cart-summary-billing col-lg-12" *ngIf="address.billing==true">
+               <p class="address">{{customerData.firstName}} {{customerData.lastName}}</p>
+               <p class="address">{{address.street}}</p>
+               <p class="address">{{address.city}} {{address.state}}, {{address.zip}}</p>
+               <div class="form-check form-check-inline col-12">
+                   <input class="form-check-input" type="checkbox" id="cart-summary-billing-verify" [ngModel]="false">
+                   <label class="form-check-label">Use this Billing Address</label>
+               </div>
+             </div>
+            </div>
+
+            <h6 class="cart-summary-address-header">Shipping Address</h6>
+            <div class="" *ngFor="let address of customerData.addresses">
+              <div class="cart-summary-shipping col-lg-12" *ngIf="address.shipping==true">
+              <p class="address">{{customerData.firstName}} {{customerData.lastName}}</p>
+              <p class="address">{{address.street}}</p>
+              <p class="address">{{address.city}} {{address.state}}, {{address.zip}}</p>
+                <div class="form-check form-check-inline col-12">
+                  <input class="form-check-input" type="checkbox" id="cart-summary-shipping-verify" [ngModel]="false">
+                  <label class="form-check-label">Use this Shipping Address</label>
+                </div>
+            </div>
+            </div>
+
+          <p class="cart-verify-email-label">Verification Email Address:</p>
+          <p class="cart-verify-email-data">{{customerData.email}}</p>
+
+      </div>
+
+
+        <!-- Cart Summary right-->
+        <div class="cart-summary-right col-6">
+          <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()">
+          <div class="form-group col-md-12">
+            <label class="form-control-label" for="sel1">Select Shipping Method:</label>
+            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="tempShippingMethod" name="shippingmethod" class="form-control" id="sel1" required="required">
+              <option>Next Day Air</option>
+              <option>Second Day Air</option>
+              <option>Standard Ground</option>
+            </select>
+            <p class="cart-shipping-method">Method Selected: {{tempShippingMethod}}</p>
+          </div>
+
+            <div class="row justify-content-center">
+              <h6 class="cart-summary-payment-header">Payment Method</h6>
+              <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="row px-2">
+                        <div class="form-group col-md-6">
+                          <label class="form-control-label">Name on Card</label>
+                          <input class="form-control" type="text" id="cname" formControlName="cname" placeholder="" required="required"> </div>
+                        <div class="form-group col-md-6">
+                          <label class="form-control-label">Card Number</label>
+                          <input class="form-control" type="text" id="cnum" formControlName="cnum" placeholder="1111 2222 3333 4444" required="required"> </div>
+                      </div>
+                      <div class="row px-2">
+                        <div class="form-group col-md-6">
+                          <label class="form-control-label">Expiration Date</label>
+                          <input class="form-control" type="text" id="exp" formControlName="exp" placeholder="MM/YYYY" required="required"> </div>
+                        <div class="form-group col-md-6">
+                          <label class="form-control-label">CVV</label>
+                          <input class="form-control" type="text" id="cvv" formControlName="cvv" placeholder="***" required="required"> </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <hr>
+            <div class="cart-button">
+              <button class="btn-primary" type="submit" [disabled]="!checkoutForm.valid">Submit Order</button>
+              <br>
+            </div>
+          </form>
+        </div>
+    </div>
+
+    </div>
+
+  </div>
+  <ng-template #noBooksInCart>
+    <div *ngIf="booksInCart.length == 0 && orderSubmitSuccess == 'no';else noBooksInCartOrderSuccess">
+      <h4>No books in cart!</h4>
+    </div>
+  </ng-template>
+  <ng-template #noBooksInCartOrderSuccess>
+    <div class="order-success-banner col-lg-4 col-md-2 col-sm-2 col-xs-1 mx-auto">
+      <span class="order-success-banner-text mx-auto">
+        <h4 class="success-text">Order Successful!</h4>
+      </span>
+    </div>
+    <h4>No books in cart!</h4>
+  </ng-template>
+</div>

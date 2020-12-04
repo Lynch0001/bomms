@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col-2" id="container-tags">
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+      </div>
+      <input [(ngModel)]="search" (keydown.enter)="getBooksBySearchInput(search)" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <h6>Book Categories</h6>
+    <ul>
+    <div class="container" *ngFor="let tag of tags | keyvalue">
+      <li (click)="getBooksByTag(tag.key)">{{tag.value}}</li>
+    </div>
+    </ul>
+  </div>
+  <div class="col-9" id="container-books">
+    <div class="row">
+    <div *ngFor="let book of books" class="col-md-4 col-sm-6 col-10 mx-auto">
+            <app-display-book [book]="book"></app-display-book>
+    </div>
+    </div>
+  </div>
+</div>

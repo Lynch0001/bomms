@@ -1,0 +1,27 @@
+.card{
+  margin-top: 1em;
+  height: 50%;
+  width: 75%;
+}
+.reviews{
+  margin-top: 1em;
+  border: 1px gray solid;
+}
+.book-data{
+  display: inline-block;
+}
+.book-image{
+  display: inline-block;
+  float: right;
+}
+.btn-primary{
+  margin-top: 1em;
+  float: right;
+}
+.cart{
+  width:5%;
+  display: block;
+  padding-top: 2em;
+  float: right;
+}
+

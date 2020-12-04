@@ -1,0 +1,22 @@
+.card{
+  margin-bottom: 1em;
+  margin-right: 1em;
+  height: 32em;
+}
+.banner-new{
+  background-color: blue;
+  color: lightgrey;
+  text-align: center;
+  padding-bottom: .25em;
+}
+.btn-primary{
+  font-size: .75em;
+  border-radius: .25pc;
+  float: right;
+}
+.card-buttons{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+

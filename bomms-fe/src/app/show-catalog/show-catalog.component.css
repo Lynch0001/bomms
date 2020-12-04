@@ -1,0 +1,29 @@
+.title{
+  padding-top: 1em;
+  display: inline-block;
+  width: fit-content;
+  margin-left: 2%;
+  margin-right: 20%;
+}
+li{
+  color: grey;
+  list-style-type: none;
+}
+
+li:hover{
+  color: black;
+  text-decoration: underline;
+  list-style-type: none;
+}
+#container-tags{
+  display: inline-block;
+}
+
+#container-books{
+
+  float: right;
+}
+.btn-outline-secondary{
+  font-size: .75em;
+  border-radius: .25pc;
+}
