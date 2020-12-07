@@ -37,6 +37,14 @@ public class BookOrder implements Serializable {
           fetch = FetchType.EAGER, orphanRemoval = true)
   private Set<BookItem> bookItems;
 
+  private ShippingAddress shippingAddress;
+
+  private String shippingMethod;
+
+  private String verificationEmail;
+
+  private String mockPaymentAuthCode;
+
   public BookOrder() {
   }
 
@@ -72,12 +80,49 @@ public class BookOrder implements Serializable {
     this.orderDate = orderDate;
   }
 
+  public ShippingAddress getShippingAddress() {
+    return shippingAddress;
+  }
+
+  public void setShippingAddress(ShippingAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
+  public String getShippingMethod() {
+    return shippingMethod;
+  }
+
+  public void setShippingMethod(String shippingMethod) {
+    this.shippingMethod = shippingMethod;
+  }
+
+  public String getVerificationEmail() {
+    return verificationEmail;
+  }
+
+  public void setVerificationEmail(String verificationEmail) {
+    this.verificationEmail = verificationEmail;
+  }
+
+  public String getMockPaymentAuthCode() {
+    return mockPaymentAuthCode;
+  }
+
+  public void setMockPaymentAuthCode(String mockPaymentAuthCode) {
+    this.mockPaymentAuthCode = mockPaymentAuthCode;
+  }
+
   @Override
   public String toString() {
     return "BookOrder{" +
             "id=" + id +
             ", custId='" + custId + '\'' +
             ", orderDate=" + orderDate +
+            ", bookItems=" + bookItems +
+            ", shippingAddress=" + shippingAddress +
+            ", shippingMethod='" + shippingMethod + '\'' +
+            ", verificationEmail='" + verificationEmail + '\'' +
+            ", mockPaymentAuthCode='" + mockPaymentAuthCode + '\'' +
             '}';
   }
 }

@@ -8,16 +8,18 @@ import {BehaviorSubject, Observable} from 'rxjs';
 export class ShareCartService {
 
   cartDto: BookInCart[] = [];
-
   private booksInCartSource = new BehaviorSubject<BookInCart[]>([]);
   public booksInCart = this.booksInCartSource.asObservable();
 
-  addBookToCart(book: any): void{
+  addBookToCart(book: any): any{
+    console.log('Adding book to cart');
     this.cartDto.push(book);
     this.booksInCartSource.next(this.cartDto);
+    console.log('cart after add: ', this.booksInCartSource.getValue());
   }
 
-  clearCart(): void{
+  clearCart(): any{
+    console.log('Clearing cart');
     this.booksInCartSource.next([]);
     this.cartDto = [];
     console.log('cart after clear: ', this.booksInCartSource.value.length);

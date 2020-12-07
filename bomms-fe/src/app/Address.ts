@@ -1,76 +1,78 @@
 export class Address {
-  private _id: number = null;
-  private _street: string;
-  private _city: string;
-  private _state: string;
-  private _zip: string;
-  private _billing: boolean = false;
-  private _shipping: boolean = false;
+  private id: number = null;
+  private name: string;
+  private street: string;
+  private city: string;
+  private state: string;
+  private zip: string;
+  private billing: boolean = false;
+  private shipping: boolean = false;
 
 
-  constructor(id: number, street: string, city: string, state: string, zip: string, billing: boolean, shipping: boolean) {
-    this._id = id;
-    this._street = street;
-    this._city = city;
-    this._state = state;
-    this._zip = zip;
-    this._billing = billing;
-    this._shipping = shipping;
+  constructor() {
   }
 
-  get id(): number {
-    return this._id;
+  get_id(): number {
+    return this.id;
   }
 
-  set id(value: number) {
-    this._id = value;
+  set_id(value: number): void {
+    this.id = value;
   }
 
-  get street(): string {
-    return this._street;
+  get_name(): string {
+    return this.name;
   }
 
-  set street(value: string) {
-    this._street = value;
+  set_name(value: string): void {
+    this.name = value;
   }
 
-  get city(): string {
-    return this._city;
+  get_street(): string {
+    return this.street;
   }
 
-  set city(value: string) {
-    this._city = value;
+  set_street(value: string): void {
+    this.street = value;
   }
 
-  get state(): string {
-    return this._state;
+  get_city(): string {
+    return this.city;
   }
 
-  set state(value: string) {
-    this._state = value;
+  set_city(value: string): void {
+    this.city = value;
   }
 
-  get zip(): string {
-    return this._zip;
+  get_state(): string {
+    return this.state;
   }
 
-  set zip(value: string) {
-    this._zip = value;
+  set_state(value: string): void {
+    this.state = value;
   }
 
-  get billing(): boolean {
-    return this._billing;
+  get_zip(): string {
+    return this.zip;
   }
 
-  set billing(value: boolean) {
-    this._billing = value;
+  set_zip(value: string): void {
+    this.zip = value;
   }
 
-  get shipping(): boolean {
-    return this._shipping;
+  get_billing(): boolean {
+    return this.billing;
   }
 
-  set shipping(value: boolean) {
-    this._shipping = value;
+  set_billing(value: boolean): void {
+    this.billing = value;
+  }
+
+  get_shipping(): boolean {
+    return this.shipping;
+  }
+
+  set_shipping(value: boolean): void {
+    this.shipping = value;
   }
 }

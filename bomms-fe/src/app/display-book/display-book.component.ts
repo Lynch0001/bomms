@@ -13,18 +13,15 @@ import {ShareCartService} from '../share-cart.service';
 export class DisplayBookComponent implements OnInit {
 
   books: any[];
-  bookData: any;
-  bookCartData: any;
+  currentYear: Date;
   @Input() book: any;
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private cart: ShareCartService) {
-    this.cart.booksInCart.subscribe(result => {
-      console.log('Display - cart', result);
-      this.books = result;
-    });
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.currentYear = new Date();
 }
 
   ngOnInit(): void {
+
   }
 
   showBookDetail(book): void {

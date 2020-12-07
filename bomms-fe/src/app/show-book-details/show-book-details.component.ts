@@ -22,12 +22,6 @@ export class ShowBookDetailsComponent implements OnInit {
     console.log('BookDetail - Book on Init: ', this.book);
   }
 
-
-  reviewCart(booksInCart): void {
-    console.log('BookDetail - Review Cart method: ', booksInCart);
-    this.router.navigate(['cart']);
-  }
-
   addToCart(): void {
     console.log('BookDetail - Add ISBN to cart: ', this.book.isbn13);
     const bookInCart = new BookInCart();
@@ -38,9 +32,6 @@ export class ShowBookDetailsComponent implements OnInit {
     bookInCart.set_qty(1);
     const convPriceToNumber = parseFloat(this.book.price.toString().substr(1));
     bookInCart.set_price(convPriceToNumber);
-    console.log('BookDetail - price: ', convPriceToNumber);
-    console.log('BookDetail - price type: ', typeof convPriceToNumber);
-    console.log('BookDetail - Adding Book to Cart: ', bookInCart);
     this.cart.addBookToCart(bookInCart);
     this.router.navigate(['catalog']);
   }

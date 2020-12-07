@@ -25,7 +25,7 @@
         <p class="cart-subtotal">Order Subtotal: {{getCartCost()[0] | currency}}</p>
         <p class="cart-tax">Estimated Tax:  {{getCartCost()[1] | currency}}</p>
         <p class="cart-tax-note">*based on 6% Virgina Sales Tax</p>
-        <p class="cart-tax">Shipping Cost:  {{getShippingCost(tempShippingMethod) | currency}}</p>
+        <p class="cart-tax">Shipping Cost:  {{getShippingCost(checkoutForm.get("tempShippingMethod").value) | currency}}</p>
         <p class="cart-total">Order Total:    {{getCartCost()[2] | currency}}</p><br>
       </div>
     </div>
@@ -44,7 +44,7 @@
                <p class="address">{{address.city}} {{address.state}}, {{address.zip}}</p>
                <div class="form-check form-check-inline col-12">
                    <input class="form-check-input" type="checkbox" id="cart-summary-billing-verify" [ngModel]="false">
-                   <label class="form-check-label">Use this Billing Address</label>
+                   <label class="form-check-label" (change)="setShippingAddress(address)">Use this Billing Address</label>
                </div>
              </div>
             </div>
@@ -56,7 +56,7 @@
               <p class="address">{{address.street}}</p>
               <p class="address">{{address.city}} {{address.state}}, {{address.zip}}</p>
                 <div class="form-check form-check-inline col-12">
-                  <input class="form-check-input" type="checkbox" id="cart-summary-shipping-verify" [ngModel]="false">
+                  <input class="form-check-input" type="checkbox" id="cart-summary-shipping-verify" (change)="setShippingAddress(address)" >
                   <label class="form-check-label">Use this Shipping Address</label>
                 </div>
             </div>
@@ -72,13 +72,14 @@
         <div class="cart-summary-right col-6">
           <form [formGroup]="checkoutForm" (ngSubmit)="submitOrder()">
           <div class="form-group col-md-12">
-            <label class="form-control-label" for="sel1">Select Shipping Method:</label>
-            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="tempShippingMethod" name="shippingmethod" class="form-control" id="sel1" required="required">
-              <option>Next Day Air</option>
-              <option>Second Day Air</option>
-              <option>Standard Ground</option>
+
+          <label class="form-control-label" for="sel1">Select Shipping Method:</label>
+          <select  formControlName="tempShippingMethod" class="form-control" id="sel1" required="required">
+            <option *ngFor="let shippingMethod of keys(shippingMethods)"
+                    [ngValue]="shippingMethod">{{shippingMethods[shippingMethod]}}</option>
             </select>
-            <p class="cart-shipping-method">Method Selected: {{tempShippingMethod}}</p>
+
+            <p class="cart-shipping-method">Method Selected: {{this.checkoutForm.get("tempShippingMethod").value}}</p>
           </div>
 
             <div class="row justify-content-center">

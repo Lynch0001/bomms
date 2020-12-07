@@ -1,20 +1,16 @@
 import {OrderItem} from './OrderItem';
 import {Address} from './Address';
-
-export enum ShippingMethod{
-  NextDayAir = 'Next Day Air',
-  SecondDayAir = 'Second Day Air',
-  Ground = 'Standard Ground'
-  }
+import {ShippingMethods} from './shippingMethods';
 
 export class Order {
   id: number;
   custId: string;
   orderDate: Date;
   bookItems: OrderItem[];
-  private billingAddress: Address;
-  private shippingAddress: Address;
-  shippingMethod: ShippingMethod;
+  shippingAddress: Address;
+  shippingMethod: ShippingMethods;
+  verificationEmail: string;
+  mockPaymentAuthCode: string;
 
   constructor() {
   }
@@ -52,15 +48,6 @@ export class Order {
     this.bookItems = bookItems;
   }
 
-
-  get_billingAddress(): any {
-    return this.billingAddress;
-  }
-
-  set_billingAddress(value: any): any {
-    this.billingAddress = value;
-  }
-
   get_shippingAddress(): any {
     return this.shippingAddress;
   }
@@ -69,12 +56,28 @@ export class Order {
     this.shippingAddress = value;
   }
 
-  get_shippingMethod(): ShippingMethod {
+  get_shippingMethod(): ShippingMethods {
     return this.shippingMethod;
   }
 
   set_shippingMethod(value: any): any {
     console.log('Set Shipping Method for value: ', value);
     this.shippingMethod = value;
+  }
+
+  get_verificationEmail(): string {
+    return this.verificationEmail;
+  }
+
+  set_verificationEmail(value: string): void {
+    this.verificationEmail = value;
+  }
+
+  get_mockPaymentAuthCode(): string {
+    return this.mockPaymentAuthCode;
+  }
+
+  set_mockPaymentAuthCode(value: string): void {
+    this.mockPaymentAuthCode = value;
   }
 }

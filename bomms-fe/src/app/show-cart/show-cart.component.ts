@@ -6,6 +6,7 @@ import {ShareCartService} from '../share-cart.service';
 import {Order} from '../Order';
 import {OrderItem} from '../OrderItem';
 import {Address} from '../Address';
+import {ShippingMethods} from '../shippingMethods';
 
 @Component({
   selector: 'app-show-cart',
@@ -13,18 +14,20 @@ import {Address} from '../Address';
   styleUrls: ['./show-cart.component.css']
 })
 
-
-
 export class ShowCartComponent implements OnInit {
 
   orderSubmitSuccess = 'no';
   customerData: any;
-  booksInCart;
+  booksInCart: any;
   newOrder: Order;
-  tempShippingMethod: any;
+  tempShippingMethod: ShippingMethods;
   tempBillingAddress: Address;
   tempShippingAddress: Address;
-  private checkoutForm: FormGroup;
+  checkoutForm: FormGroup;
+  mockPaymentAuthCode: string = null;
+  shippingMethods = ShippingMethods;
+  keys = Object.keys;
+
 
 
   constructor(public rest: RestService,
@@ -32,26 +35,25 @@ export class ShowCartComponent implements OnInit {
               private router: Router,
               private cart: ShareCartService,
               private formBuilder: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.cart.booksInCart.subscribe(result => {
-      this.booksInCart = result;
-      console.log('Show cart Init - Books in Cart: ', this.booksInCart);
+      this.booksInCart = result; });
 
-    });
     this.getCustomerData(1);
+
     this.checkoutForm = this.formBuilder.group({
       cname: '',
       cnum: '',
       exp: '',
       cvv: '',
-      shippingmethod: ''
+      tempShippingMethod: ''
     });
+    console.log('Shipping Method Enum: ', this.shippingMethods);
   }
 
-  getCustomerData(id: number): void {
+  getCustomerData(id: number): any {
     console.log('Cart component get customer data for customer id: ', id);
     this.rest.getCustomerData(id).subscribe((data: {}) => {
       this.customerData = data;
@@ -69,22 +71,23 @@ export class ShowCartComponent implements OnInit {
       cartTotal = cartTotal + (book.price * book.qty * (1 + taxRate));
     }
     cartTax = cartWithoutTax * taxRate;
-    cartTotal = cartTotal + this.getShippingCost(this.tempShippingMethod);
+    cartTotal = cartTotal + this.getShippingCost(this.checkoutForm.get('tempShippingMethod').value);
     return [cartWithoutTax, cartTax, cartTotal];
   }
 
   getShippingCost(tempShippingMethod): number{
+    console.log('Shipping cost based on Method: ', tempShippingMethod);
     let shippingCost = 0;
     switch (tempShippingMethod){
-      case 'Next Day Air': {
+      case 'NextDayAir': {
         shippingCost = 9.99;
         break;
       }
-      case 'Second Day Air': {
+      case 'SecondDayAir': {
         shippingCost = 4.35;
         break;
       }
-      case 'Standard Ground': {
+      case 'Ground': {
         shippingCost = 2.15;
         break;
       }
@@ -96,16 +99,34 @@ export class ShowCartComponent implements OnInit {
     return shippingCost;
   }
 
+  getMockPaymentAuthCode(): string{
+    return 'Approved XXX123456789';
+  }
+
+  setShippingAddress(address): void {
+    console.log('Setting Shipping Address to: ', address);
+    this.tempShippingAddress = new Address();
+    this.tempShippingAddress.set_name(this.customerData.firstName + ' ' + this.customerData.lastName);
+    this.tempShippingAddress.set_street(address.street);
+    this.tempShippingAddress.set_city(address.city);
+    this.tempShippingAddress.set_state(address.state);
+    this.tempShippingAddress.set_zip(address.zip);
+    console.log('Temp Shipping Address set to: ', this.tempShippingAddress);
+  }
+
   submitOrder(): any{
+    // Todo: check valid payment auth code before proceeding
     console.log('CheckoutForm Value: ', this.checkoutForm.value);
     const newOrder = new Order();
     newOrder.set_custid(this.customerData.custId);
     console.log('NewOrder CustomerData: ', this.customerData.custId);
     console.log('NewOrder Custid: ', newOrder.get_custid());
     newOrder.set_orderDate(new Date());
-    newOrder.set_shippingMethod(this.tempShippingMethod);
-    newOrder.set_billingAddress(this.tempBillingAddress);
+    newOrder.set_shippingMethod(this.checkoutForm.get('tempShippingMethod').value);
+    newOrder.set_verificationEmail(this.customerData.email);
+    console.log('NewOrder Shipping Address: ', this.tempShippingAddress);
     newOrder.set_shippingAddress(this.tempShippingAddress);
+    newOrder.set_mockPaymentAuthCode(this.getMockPaymentAuthCode());
     newOrder.bookItems = [];
     console.log('NewOrder Date: ', newOrder.orderDate);
     for (const bookInCart of this.booksInCart){

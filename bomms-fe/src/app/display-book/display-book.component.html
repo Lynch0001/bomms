@@ -1,5 +1,5 @@
 <div class="card" style="width: 15rem;">
-  <h6 *ngIf="book.year==2020" class="banner-new">NEW</h6>
+  <h6 *ngIf="book.year==currentYear.getFullYear()" class="banner-new">NEW</h6>
   <img class="card-img-top" src="{{book.image}}" alt="book_cover_image">
   <div class="card-body">
     <h6 class="card-title">{{book.title}}</h6>

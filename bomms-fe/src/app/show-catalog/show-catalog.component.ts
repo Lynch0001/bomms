@@ -19,7 +19,6 @@ export class ShowCatalogComponent implements OnInit {
   booksFullList: any = [];
   booksByTag: any = [];
   booksBySearch: any = [];
-  index: number = 0;
 
   constructor(public rest: RestService, private route: ActivatedRoute, private router: Router) {
   }

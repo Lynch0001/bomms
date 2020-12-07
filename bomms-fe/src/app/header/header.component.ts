@@ -10,16 +10,14 @@ import {ShareCartService} from '../share-cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  booksInCartH;
-  books: any;
+  booksInCartH: any;
 
-  constructor(public rest: RestService, private route: ActivatedRoute, private router: Router, private cart: ShareCartService) {
+  constructor(private route: ActivatedRoute, private router: Router, private cart: ShareCartService) {
   }
 
   ngOnInit(): void {
-    this.cart.booksInCart.subscribe(result => {
+    this.cart.booksInCart.subscribe((result: {}) => {
       this.booksInCartH = result;
-      console.log('Header - Constructor Cart: ', this.booksInCartH);
     });
   }
 
@@ -27,5 +25,4 @@ export class HeaderComponent implements OnInit {
     console.log('Catalog - Review Cart method: ', this.booksInCartH);
     this.router.navigate(['cart']);
   }
-
 }
