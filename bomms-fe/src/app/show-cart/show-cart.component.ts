@@ -100,7 +100,8 @@ export class ShowCartComponent implements OnInit {
   }
 
   getMockPaymentAuthCode(): string{
-    return 'Approved XXX123456789';
+    const auth = (Math.floor(Math.random() * 101) + 1) * 12345678;
+    return 'Approved XXXX' + auth.toString();
   }
 
   setShippingAddress(address): void {
