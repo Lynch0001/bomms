@@ -127,7 +127,7 @@ Functionality allows users to:
 *	Submit the cart as a new book order
 
 
-# Selected Views
+## Selected Views
 
 ![Product Screen Shot1][product-screenshot1]
 
