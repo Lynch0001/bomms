@@ -80,9 +80,9 @@ To get a local copy up and running follow these simple steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 
-* Working
+* RabbitMQ (For messaging between Order-Service and Acknowledgement-Service)
 ```sh
-working
+Follow download and install instructions from https://www.rabbitmq.com/download.html
 ```
 
 * npm
@@ -100,8 +100,18 @@ git clone https://github.com/lynch0001/bomms.git
 ```sh
 npm install
 ```
-
-
+3. Install and run RabbitMQ server 
+```sh
+Follow instructions at instructions from https://www.rabbitmq.com/download.html
+```
+4. Run Each of the Spring Services staring with the Discovery-Service and Ending with the Gateway-Service 
+```sh
+mvn spring-boot:run
+```
+5. Run the Frontend 
+```sh
+ng serve
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
