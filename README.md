@@ -125,6 +125,20 @@ Functionality allows users to:
 *	Submit the cart as a new book order
 
 
+# Selected Views
+
+![Product Screen Shot1][product-screenshot1]
+
+Figure 1: Catalog View
+
+![Product Screen Shot2][product-screenshot2]
+
+Figure 2: Book Detail View
+
+![Product Screen Shot3][product-screenshot3]
+
+Figure 3: Cart View
+
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -194,3 +208,6 @@ Project Link: [https://github.com/lynch0001/bomms](https://github.com/lynch0001/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
 [product-screenshot]: 
+[product-screenshot1]: https://user-images.githubusercontent.com/35854692/101530850-72c3a480-3960-11eb-9220-1b7594c3f646.PNG
+[product-screenshot2]: https://user-images.githubusercontent.com/35854692/101686547-33b45280-3a37-11eb-8bd9-5f7074919c34.PNG
+[product-screenshot3]: https://user-images.githubusercontent.com/35854692/101686624-4cbd0380-3a37-11eb-9e03-1ca9d1583746.PNG
