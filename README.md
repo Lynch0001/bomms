@@ -119,6 +119,8 @@ ng serve
 Functionality allows users to:
 
 *	View catalog of books available from My Mock Bookstore
+* Search for books using provided links
+* Search for books based on user search input
 *	See details of each book
 *	Add books to a cart
 *	Review the contents of the cart
@@ -207,6 +209,7 @@ Project Link: [https://github.com/lynch0001/bomms](https://github.com/lynch0001/
 [license-url]: https://github.com/lynch0001/bomms/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/timothy-j-lynch/
+[product-screenshot]: https://user-images.githubusercontent.com/35854692/101530850-72c3a480-3960-11eb-9220-1b7594c3f646.PNG
 [product-screenshot1]: https://user-images.githubusercontent.com/35854692/101530850-72c3a480-3960-11eb-9220-1b7594c3f646.PNG
 [product-screenshot2]: https://user-images.githubusercontent.com/35854692/101686547-33b45280-3a37-11eb-8bd9-5f7074919c34.PNG
 [product-screenshot3]: https://user-images.githubusercontent.com/35854692/101686624-4cbd0380-3a37-11eb-9e03-1ca9d1583746.PNG
