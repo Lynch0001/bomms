@@ -80,9 +80,9 @@ To get a local copy up and running follow these simple steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 
-* NASA Exoplanet Data (Available at https://exoplanetarchive.ipac.caltech.edu/docs/data.html)
+* Working
 ```sh
-download Confirmed Planets Table (in CSV Format with defaults or all columns/all rows)
+working
 ```
 
 * npm
