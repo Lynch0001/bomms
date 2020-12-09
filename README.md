@@ -116,10 +116,13 @@ ng serve
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Functionality allows users to:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+*	View catalog of books available from My Mock Bookstore
+*	See details of each book
+*	Add books to a cart
+*	Review the contents of the cart
+*	Submit the cart as a new book order
 
 
 <!-- ROADMAP -->
